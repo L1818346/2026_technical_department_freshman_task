@@ -1,11 +1,4 @@
 // 失物招领平台（单文件实现，Go 标准库 + SQLite 数据库）
-//
-//	与最初的内存版相比，本版本把存储层从「Go 的 map」换成了「真正的数据库」：
-//	  - 数据落在磁盘文件 lostfound.db 中，服务重启后数据依然存在
-//	  - 筛选 / 排序 / 分页由 SQL 的 WHERE / ORDER BY / LIMIT 完成
-//	  - users / items / sessions 三张表，带主键、唯一约束、外键和索引
-//	  - 用纯 Go 的 modernc.org/sqlite 驱动：不需要 CGO，不需要安装 gcc，也不需要单独启动数据库服务
-//
 // 功能：
 //  1. 用户注册 / 登录 / 获取当前用户信息 / 退出登录
 //     - 登录后签发 JWT，同时写入 HttpOnly Cookie（Cookie/Session），也支持 Authorization: Bearer <token>
